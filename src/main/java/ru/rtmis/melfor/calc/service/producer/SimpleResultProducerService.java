@@ -20,7 +20,7 @@ public class SimpleResultProducerService implements ResultProducerService {
 
     @Override
     public void produce(ResultDto resultDto) {
-        log.info("<= sending {} to " + RESULT, writeValueAsString(resultDto));
+        log.info("<= sending {} to {}", writeValueAsString(resultDto), RESULT);
         kafkaCalcTemplate.send(RESULT, resultDto);
     }
 

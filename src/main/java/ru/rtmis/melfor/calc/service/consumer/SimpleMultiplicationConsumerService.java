@@ -23,7 +23,7 @@ public class SimpleMultiplicationConsumerService implements MultiplicationConsum
     @Override
     @KafkaListener(topics = {MULTIPLICATION}, containerFactory = KAFKA_LISTENER_CONTAINER_FACTORY, groupId = CALC)
     public void consume(CalcDto calcDto) {
-        log.info("=> consumed {} from " + MULTIPLICATION, writeValueAsString(calcDto));
+        log.info("=> consumed {} from {}", writeValueAsString(calcDto), MULTIPLICATION);
         mathOperationService.multiply(calcDto);
     }
 

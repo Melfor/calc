@@ -23,7 +23,7 @@ public class SimpleAdditionConsumerService implements AdditionConsumerService {
     @Override
     @KafkaListener(topics = {ADDITION}, containerFactory = KAFKA_LISTENER_CONTAINER_FACTORY, groupId = CALC)
     public void consume(CalcDto calcDto) {
-        log.info("=> consumed {} from " + ADDITION, writeValueAsString(calcDto));
+        log.info("=> consumed {} from {}", writeValueAsString(calcDto), ADDITION);
         mathOperationService.add(calcDto);
     }
 
